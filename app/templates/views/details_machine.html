@@ -1,0 +1,25 @@
+<ion-view class="profile-view">
+   <ion-nav-title >
+      <img ng-src="images/logo.png" width="200px">
+   </ion-nav-title>
+   <ion-content style="background-color: #444;">
+      <div class="top-content row" style="height: 40vh;">
+         <div class="profile-container" style="margin-top: 12vh;">
+            <div class="user-name">{{machine[0].name | uppercase}}</div>
+            <h5 class="user-name">{{machine[0].type | uppercase}}</h5>
+         </div>
+         <div class="user-background-image-outer" style="height: 40vh;">
+            <div class="multi-bg-outer finish-loading" style="background-image: url('http://3.bp.blogspot.com/_9L69Hru9850/SypZBc7xKSI/AAAAAAAAAAM/uOZtyPyQxfE/s320/pub.jpg');">
+
+                <span class="bg-overlay"></span>
+            </div>
+         </div>
+      </div>
+              <div class="mid-bar dark-bg z1 padding" style="text-align: center;">
+            <h4>{{machine[0].description | uppercase}}.</h4>
+            <p>
+              <strong style="color: #fff;">Serial: </strong> <span style="color: #fff;font-weight: 300;">{{machine[0].code}}</span>
+            </p>
+        </div>
+   </ion-content>
+</ion-view>

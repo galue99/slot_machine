@@ -1,0 +1,18 @@
+<ion-view class="home-view">
+   <ion-nav-title >
+      <img ng-src="images/logo.png" width="200px">
+   </ion-nav-title>
+  <ion-content>
+    <ion-refresher pulling-text="Sueltra para actualizar..." on-refresh="doRefresh()"></ion-refresher>
+    <div class="list" data-ng-repeat="machine in machines">
+
+        <a class="item item-avatar item-icon-right title-list-d div-list" ui-sref="app.list_machine/details({id: machine.id})">
+            <img class="img-list" ng-src="http://3.bp.blogspot.com/_9L69Hru9850/SypZBc7xKSI/AAAAAAAAAAM/uOZtyPyQxfE/s320/pub.jpg">
+            <h2>{{machine.name | uppercase}}</h2>
+            <p class="sub-title">{{machine.type | uppercase}}</p>
+            <p class="sub-title">{{machine.description | uppercase}}</p>
+            <span class="descuen-text">{{machine.code | uppercase}}</span>
+        </a>
+    </div>
+  </ion-content>
+</ion-view>

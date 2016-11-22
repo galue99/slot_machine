@@ -1,0 +1,18 @@
+{
+  "name": "SlotMachine",
+  "author": "Edgar Espinetti <edespinetti@gmail.com>",
+  "private": "true",
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "~1.4.8",
+    "ngCordova": "~0.1.23-alpha",
+    "angular-resource": "~1.4.8",
+    "ionic": "~1.2.1",
+    "ionic-material": "^0.4.2",
+    "angular-simple-logger": "^0.1.7",
+    "angular-google-maps": "^2.4.0"
+  },
+  "resolutions": {
+    "angular": "1.4.8"
+  }
+}
