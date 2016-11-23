@@ -20,6 +20,7 @@ angular.module( 'SlotMachine', [
   'ngResource',
   'uiGmapgoogle-maps'
 ] )
+
 .run( [
   '$ionicPlatform',
   '$stateParams',
@@ -54,6 +55,15 @@ angular.module( 'SlotMachine', [
 
     // Application routing
     $stateProvider
+      .state('auth', {
+        url: '/auth',
+        abstract: true,
+        templateUrl: 'templates/auth.html'
+      })
+      .state('auth.login', {
+        url: '/login',
+        templateUrl: "templates/views/login.html",
+      })
       .state('app', {
         url: '/app',
         abstract: true,
@@ -113,7 +123,7 @@ angular.module( 'SlotMachine', [
 
 
     // redirects to default route for undefined routes
-    $urlRouterProvider.otherwise('/app/home');
+    $urlRouterProvider.otherwise('/auth/login');
   }
 ] )
 
@@ -130,4 +140,5 @@ angular.module( 'SlotMachine', [
 //
 
 .factory( 'MachineService',            require( './services/MachineService'     ) )
+
 ;

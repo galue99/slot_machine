@@ -1,0 +1,32 @@
+<ion-view class="login-view auth-view" cache-view="false">
+  <ion-content scroll="false">
+    <div class="row">
+      <div class="col col-center">
+        <div class="card login-container">
+          <form name="login_form" class="" novalidate ng-cloak>
+                <div class="list">
+                  <label class="item item-input">
+                    <input type="text" placeholder="Username" name="user_username"  required>
+                  </label>
+                  <label class="item item-input" show-hide-container>
+                    <input type="password" placeholder="Contraseña" name="user_password" required>
+                  </label>
+                </div>
+    
+      
+            <div class="item item-body bottom-content">
+              <button ui-sref="app.home" type="submit" class="button button-balanced button-block" ng-disabled="login_form.$invalid">
+                Entrar ya!
+              </button>
+            </div>
+          </form>
+        </div>
+        <!--<div class="alternative-actions">
+          <a class="forgot-password button button-small button-clear button-light" ui-sref="auth.forgot-password">
+            Olvide mi contraseña?
+          </a>
+        </div>-->
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

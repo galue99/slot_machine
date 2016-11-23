@@ -1,6 +1,10 @@
 <ion-view class="home-view">
    <ion-nav-title >
       <img ng-src="images/logo.png" width="200px">
+
+      <div class="buttons pull-right" style="top: -4px;right: -7px;">
+       <button class="button button-clear" ng-click="captureQr()"><i class="ion ion-compose" style="color: white;font-size: 38px;"></i> </button>
+     </div>
    </ion-nav-title>
   <ion-content>
     <ion-refresher pulling-text="Sueltra para actualizar..." on-refresh="doRefresh()"></ion-refresher>
@@ -16,3 +20,41 @@
     </div>
   </ion-content>
 </ion-view>
+
+
+<script id="templates/modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-assertive" style="">
+        <div class="h1 title" style="color: white">Crear Nueva Maquina</div>
+        <button class="button button-clear" ng-click="modal.hide()"><i class="ion ion-close" style="color: white"></i> </button>
+
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Id</span>
+          <input type="text" placeholder="Id" readonly ng-model="machineId">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="Nombre" readonly ng-model="machineName">
+        </label>
+        <hr>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Precio Entrada</span>
+          <input type="text" placeholder="Entrada">
+          <span class="input-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+        </label>
+        <hr>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Precio Salida</span>
+          <input type="text" placeholder="Salida"> 
+          <span class="input-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+        </label>
+        <hr>
+        <button class="button button-large button-assertive pull-right" ng-click="createContact(newUser)">Guardar</button>
+        <div class="spacing-botton"></div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
