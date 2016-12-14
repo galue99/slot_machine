@@ -58,7 +58,8 @@ angular.module( 'SlotMachine', [
       .state('auth', {
         url: '/auth',
         abstract: true,
-        templateUrl: 'templates/auth.html'
+        templateUrl: 'templates/auth.html',
+        controller: 'LoginController'
       })
       .state('auth.login', {
         url: '/login',
@@ -129,6 +130,7 @@ angular.module( 'SlotMachine', [
 
 // Angular module controllers
 //
+.controller( 'LoginController',     require( './controllers/loginController'     ) )
 .controller( 'MainController',     require( './controllers/mainController'     ) )
 .controller( 'HomeController',     require( './controllers/homeController'     ) )
 .controller( 'SettingsController', require( './controllers/settingsController' ) )

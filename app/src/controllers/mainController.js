@@ -8,9 +8,13 @@
  */
 module.exports = [
     '$scope',
+    '$state',
 
-    function( $scope )
+    function( $scope , $state)
     {
-        // do something with $scope
+       $scope.logout = function(){
+       		localStorage.removeItem("token");
+       		$state.go("auth.login")
+       }
     }
 ];
