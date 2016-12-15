@@ -101,6 +101,16 @@ angular.module( 'SlotMachine', [
           }
         }
       })
+      .state('app.list_machine_audite', {
+              url: '/list_machine_audite',
+              cache: true,
+              views: {
+                'viewContent': {
+                  templateUrl: 'templates/views/machine_audite_month.html',
+                  controller: 'HomeController'
+                }
+              }
+            })
       .state('app.list_machine/details', {
         url: '/list_machine/details/{id}',
         cache: true,
