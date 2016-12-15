@@ -3,19 +3,19 @@
     <div class="row">
       <div class="col col-center">
         <div class="card login-container">
-          <form name="login_form" class="" novalidate ng-cloak>
+          <form ng-submit="login()" name="login_form" class="" novalidate ng-cloak>
                 <div class="list">
                   <label class="item item-input">
-                    <input type="text" placeholder="Username" name="user_username"  required>
+                    <input type="text" placeholder="Username" name="user_username"  required ng-model="user.username">
                   </label>
                   <label class="item item-input" show-hide-container>
-                    <input type="password" placeholder="Contraseña" name="user_password" required>
+                    <input type="password" placeholder="Contraseña" name="user_password" required ng-model="user.password">
                   </label>
                 </div>
     
       
             <div class="item item-body bottom-content">
-              <button ui-sref="app.home" type="submit" class="button button-balanced button-block" ng-disabled="login_form.$invalid">
+              <button type="submit" class="button button-balanced button-block" ng-disabled="login_form.$invalid">
                 Entrar ya!
               </button>
             </div>

@@ -25,8 +25,8 @@ module.exports = [
 
     var getPlaces = function() {
       return $http({
-        url: 'http://smc.gamingpty.com/api/places',
-        method: 'GET'
+        url: 'http://smc.gamingpty.com/api/places?token=' + localStorage.getItem("token"),
+        method: 'GET',
       })
         .success(function(data) {
         })
@@ -37,7 +37,7 @@ module.exports = [
 
     var getPlacesId = function(id) {
       return $http({
-        url: 'http://smc.gamingpty.com/api/places/' + id,
+        url: 'http://smc.gamingpty.com/api/places/' + id + '?token=' + localStorage.getItem("token"),
         method: 'GET'
       })
         .success(function(data) {
@@ -50,7 +50,7 @@ module.exports = [
 
     var getPlacesMachineId = function(id) {
       return $http({
-        url: 'http://smc.gamingpty.com/api/places/'+id+'/machines',
+        url: 'http://smc.gamingpty.com/api/places/'+id+'/machines?token=' + localStorage.getItem("token"),
         method: 'GET'
       })
         .success(function(data) {
@@ -63,7 +63,7 @@ module.exports = [
 
     var getMachineId = function(id) {
       return $http({
-        url: 'http://smc.gamingpty.com/api/machines/' + id,
+        url: 'http://smc.gamingpty.com/api/machines/' + id + '?token=' + localStorage.getItem("token"),
         method: 'GET'
       })
         .success(function(data) {
