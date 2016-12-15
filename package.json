@@ -53,11 +53,18 @@
     "gulp": "./node_modules/.bin/gulp"
   },
   "cordovaPlugins": [
-    "cordova-plugin-whitelist",
     {
       "locator": "https://github.com/apache/cordova-plugin-splashscreen.git",
       "id": "cordova-plugin-splashscreen"
     },
+    "cordova-plugin-media-capture",
+    "cordova-plugin-file",
+    "cordova-plugin-compat",
+    {
+      "locator": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git",
+      "id": "phonegap-plugin-barcodescanner"
+    },
+    "cordova-plugin-whitelist",
     "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
