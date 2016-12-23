@@ -1,0 +1,25 @@
+<ion-view class="home-view">
+  <ion-nav-title >
+    <img ng-src="images/logo.png" width="200px">
+  </ion-nav-title>
+  <ion-content style="background-color: white;">
+    <ion-refresher pulling-text="Sueltra para actualizar..." on-refresh="refresh()"></ion-refresher>
+
+
+    <div class="list" style="" ng-cloak data-ng-repeat="place in data">
+
+      <a class="item item-avatar title-list-d div-list" ui-sref="app.machine_audite({id: place.idPlace})">
+        <img src="images/icon.png">
+        <h2>{{place.place | uppercase}}</h2>
+        <p>Cantidad de Máquinas: {{place.quantityMac}}</p>
+        <p>Balance: {{place.balance}}</p>
+        <span class="badge badge-balanced" style="position:absolute;padding-top:5px;padding-bottom:5px;margin-right:65px; margin-top:50px;">{{place.counterWin}}</span>
+        <span class="badge badge-assertive" style="position:absolute;padding-top:5px;padding-bottom:5px;margin-top:50px;">{{place.counterOut}}</span>
+      </a>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>
+

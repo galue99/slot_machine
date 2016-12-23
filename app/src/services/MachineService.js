@@ -74,13 +74,44 @@ module.exports = [
         });
     };
 
+    var getPlacesEstablishmentsAudite = function(id) {
+      return $http({
+        url: 'http://smc.gamingpty.com/api/tracking/' + id + '?token=' + localStorage.getItem("token"),
+        method: 'GET'
+      })
+        .success(function(data) {
+          //console.log(data);
+        })
+        .error(function(error) {
+          console.log('an error occured', error);
+        });
+    };
+
+    var getPlacesMachineAudite = function(id) {
+
+      var user = JSON.parse(localStorage.getItem("data"))
+
+      return $http({
+        url: 'http://smc.gamingpty.com/api/trackingmachine/' + user.user_id + '/' + id + '?token=' + localStorage.getItem("token"),
+        method: 'GET'
+      })
+        .success(function(data) {
+          //console.log(data);
+        })
+        .error(function(error) {
+          console.log('an error occured', error);
+        });
+    };
+
     // public api
     return {
-      doSomethingAsync: doSomethingAsync,
-      getPlaces: getPlaces,
+      doSomethingAsync:doSomethingAsync,
+      getPlaces:getPlaces,
       getPlacesId:getPlacesId,
       getPlacesMachineId:getPlacesMachineId,
-      getMachineId:getMachineId
+      getMachineId:getMachineId,
+      getPlacesEstablishmentsAudite:getPlacesEstablishmentsAudite,
+      getPlacesMachineAudite:getPlacesMachineAudite
     };
   }
 ];

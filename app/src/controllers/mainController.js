@@ -12,6 +12,8 @@ module.exports = [
 
     function( $scope , $state)
     {
+       $scope.username = JSON.parse(localStorage.getItem("data"));
+
        $scope.logout = function(){
        		localStorage.removeItem("token");
        		$state.go("auth.login")

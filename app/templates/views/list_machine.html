@@ -33,24 +33,26 @@
       <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Id</span>
-          <input type="text" placeholder="Id" readonly ng-model="machineId">
+          <input type="text" placeholder="Id" readonly ng-model="machine.id">
         </label>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Nombre</span>
-          <input type="text" placeholder="Nombre" readonly ng-model="machineName">
+          <input type="text" placeholder="Nombre" readonly ng-model="machine.name">
         </label>
         <hr>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Precio Entrada</span>
           <input type="text" placeholder="Entrada">
-          <span class="input-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+
         </label>
+        <span class="item item-input item-stacked-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
         <hr>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Precio Salida</span>
-          <input type="text" placeholder="Salida"> 
-          <span class="input-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+          <input type="text" placeholder="Salida">
+
         </label>
+        <span class="item item-input item-stacked-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
         <hr>
         <button class="button button-large button-assertive pull-right" ng-click="createContact(newUser)">Guardar</button>
         <div class="spacing-botton"></div>

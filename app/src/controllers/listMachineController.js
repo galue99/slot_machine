@@ -10,6 +10,8 @@
  * # ListMachineController
  */
 module.exports = [
+  '$ionicPopup',
+  '$http',
   '$scope',
   '$stateParams',
   'MachineService',
@@ -19,7 +21,7 @@ module.exports = [
   '$cordovaCapture',
 
 
-  function($scope, $stateParams, MachineService, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, $cordovaCapture)
+  function($ionicPopup, $http, $scope, $stateParams, MachineService, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, $cordovaCapture)
   {
     var id = $stateParams.id;
 
@@ -42,19 +44,38 @@ module.exports = [
       $scope.modal = modal;
     });
 
-    $scope.captureQr = function(){   
+    $scope.captureQr = function(){
       $cordovaBarcodeScanner
         .scan()
         .then(function(barcodeData) {
-          console.log(barcodeData)
-          $scope.modal.show()
+          console.log(barcodeData);
+          try{
+            var obj=eval("("+barcodeData.text+")");
+            console.log(obj)
+
+            $http({
+                        method: 'GET',
+                        url: 'http://smc.gamingpty.com/api/machines/'+obj.id+'?token='+localStorage.getItem("token")+''
+                      }).then(function successCallback(response) {
+                          console.log(response.data)
+                          $scope.machine = response.data.result[0];
+                          $scope.modal.show()
+                        }, function errorCallback(response) {
+                          // called asynchronously if an error occurs
+                          // or server returns response with an error status.
+                        });
+          }
+          catch(err){
+            $ionicPopup.alert({title: 'Error!!',template: 'La maquina analizada es incorrecta, intente de nuevo'});
+          }
+
         }, function(error) {
-          // An error occurred
+          $ionicPopup.alert({title: 'Error!!',template: 'La maquina analizada es incorrecta, intente de nuevo'});
         });
     }
 
     $scope.captureImage = function() {
-      var options = { limit: 3 };
+      var options = { limit: 1 };
 
       $cordovaCapture.captureImage(options).then(function(imageData) {
          alert("Imagen Capturada.")

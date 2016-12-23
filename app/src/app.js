@@ -101,16 +101,26 @@ angular.module( 'SlotMachine', [
           }
         }
       })
-      .state('app.list_machine_audite', {
-              url: '/list_machine_audite',
-              cache: true,
-              views: {
-                'viewContent': {
-                  templateUrl: 'templates/views/machine_audite_month.html',
-                  controller: 'HomeController'
-                }
-              }
-            })
+      .state('app.machine_audite', {
+         url: '/list_machine_audite/{id}',
+         cache: true,
+         views: {
+           'viewContent': {
+              templateUrl: 'templates/views/machine_audite.html',
+              controller: 'AuditeMachineController'
+           }
+         }
+      })
+      .state('app.list_establishments_audite', {
+         url: '/list_establishments_audite',
+         cache: true,
+         views: {
+           'viewContent': {
+              templateUrl: 'templates/views/establishments_audite_month.html',
+              controller: 'EstablishmentsAuditeController'
+           }
+         }
+      })
       .state('app.list_machine/details', {
         url: '/list_machine/details/{id}',
         cache: true,
@@ -147,6 +157,8 @@ angular.module( 'SlotMachine', [
 .controller( 'PlacesDetailsController', require( './controllers/placesDetailsController' ) )
 .controller( 'ListMachineController', require( './controllers/listMachineController.js' ) )
 .controller( 'DetailsMachineController', require( './controllers/detailsMachineController.js' ) )
+.controller( 'AuditeMachineController', require( './controllers/auditeMachineController.js' ) )
+.controller( 'EstablishmentsAuditeController', require( './controllers/establishmentsAuditeController.js' ) )
 
 // Angular module services
 //

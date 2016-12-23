@@ -23,16 +23,16 @@
               <img class="user-image" ng-src="images/avatar.jpg" spinner-on-load>
             </pre-img>
           </div>
-          <h2 class="greeting">Hola Invitado</h2>
+          <h2 class="greeting">Hola {{username.name}}</h2>
           <p class="message">Bienvenido!</p>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref-active="active" ui-sref="app.home">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref-active="active" ui-sref="app.list_establishments_audite">
           <i class="icon ion-android-apps"></i>
           <h2 class="menu-text">Home</h2>
         </ion-item>
-        <ion-item class="item-icon-left" nav-clear menu-close ui-sref-active="active" ui-sref="app.list_machine_audite">
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref-active="active" ui-sref="app.home">
           <i class="icon ion-settings"></i>
-          <h2 class="menu-text">Maquinas Auditadas en el mes</h2>
+          <h2 class="menu-text">Lista de Establecimientos</h2>
         </ion-item>
          <ion-item class="item-icon-left" nav-clear menu-close ng-click="logout()" >
           <i class="icon ion-close"></i>

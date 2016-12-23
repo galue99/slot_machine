@@ -24,6 +24,8 @@ module.exports = [
     });
 
 
+    console.log(JSON.parse(localStorage.getItem("data")));
+
 
     $scope.updatePlaces = function(){
       MachineService.doSomethingAsync()
