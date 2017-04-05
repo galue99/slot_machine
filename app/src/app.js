@@ -18,7 +18,8 @@ angular.module( 'SlotMachine', [
   'ionic',
   'ngCordova',
   'ngResource',
-  'uiGmapgoogle-maps'
+  'uiGmapgoogle-maps',
+  'ngFileUpload'
 ] )
 
 .run( [

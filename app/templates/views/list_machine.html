@@ -42,19 +42,19 @@
         <hr>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Precio Entrada</span>
-          <input type="text" placeholder="Entrada">
+          <input type="text" placeholder="Entrada" ng-model='text.textOut'>
 
         </label>
-        <span class="item item-input item-stacked-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+        <span class="item item-input item-stacked-label" ng-click="captureImage(1)"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
         <hr>
         <label class="item item-input item-stacked-label">
           <span class="input-label">Precio Salida</span>
-          <input type="text" placeholder="Salida">
+          <input type="text" placeholder="Salida" ng-model='text.textWin'>
 
         </label>
-        <span class="item item-input item-stacked-label" ng-click="captureImage()"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
+        <span class="item item-input item-stacked-label" ng-click="captureImage(2)"><i class="ion-ios-camera" style="font-size: 28px;"> - Añadir Imagen</i></span>
         <hr>
-        <button class="button button-large button-assertive pull-right" ng-click="createContact(newUser)">Guardar</button>
+        <button ng-click='sendForm()' class="button button-large button-assertive pull-right" ng-click="createContact(newUser)">Guardar</button>
         <div class="spacing-botton"></div>
       </div>
     </ion-content>

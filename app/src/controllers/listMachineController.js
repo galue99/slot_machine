@@ -10,6 +10,9 @@
  * # ListMachineController
  */
 module.exports = [
+  '$state',
+  '$cordovaCamera',
+  'Upload',
   '$ionicPopup',
   '$http',
   '$scope',
@@ -18,10 +21,9 @@ module.exports = [
   '$ionicLoading',
   '$ionicModal',
   '$cordovaBarcodeScanner',
-  '$cordovaCapture',
 
 
-  function($ionicPopup, $http, $scope, $stateParams, MachineService, $ionicLoading, $ionicModal, $cordovaBarcodeScanner, $cordovaCapture)
+  function($state, $cordovaCamera,Upload, $ionicPopup, $http, $scope, $stateParams, MachineService, $ionicLoading, $ionicModal, $cordovaBarcodeScanner)
   {
     var id = $stateParams.id;
 
@@ -30,13 +32,14 @@ module.exports = [
       duration: 3000
     });
 
-    MachineService.getPlacesMachineId(id)
+   /* MachineService.getPlacesMachineId(id)
       .then(function(response) {
         $scope.machines = response.data.result;
         $ionicLoading.hide();
         // close pull to refresh loader
         $scope.$broadcast('scroll.refreshComplete');
-    });
+    });*/
+    $ionicLoading.hide();
 
     $ionicModal.fromTemplateUrl('templates/modal.html', {
       scope: $scope
@@ -74,14 +77,70 @@ module.exports = [
         });
     }
 
-    $scope.captureImage = function() {
+    $scope.image1 = null;
+    $scope.image2 = null;
+    $scope.captureImage = function(image_id) {
       var options = { limit: 1 };
+              var options = {
+          quality: 50,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 50,
+          targetHeight: 100,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false,
+          correctOrientation:true
+        };
+      if (image_id == 1){
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+          console.log(imageData)
+          $scope.image1 = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+          console.log(err)
+        });
+      }else{
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+          $scope.image2 = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+          console.log(err)
+        });
+      }
+    }
 
-      $cordovaCapture.captureImage(options).then(function(imageData) {
-         alert("Imagen Capturada.")
-      }, function(err) {
-        // An error occurred. Show a message to the user
-      });
+
+     $scope.text={};
+    $scope.sendForm = function(){
+      
+      var blob1 = Upload.dataUrltoBlob($scope.image1, '1');
+      var blob2 = Upload.dataUrltoBlob($scope.image2, '2');
+      console.log(blob1)
+         Upload.upload({
+              url: 'http://smc.gamingpty.com/api/tracking',
+              data: {
+                imageOut: blob1,
+                imageWin: blob2,
+                'textOut': $scope.text.textOut,
+                'textWin': $scope.text.textWin,
+                'machineId': $scope.machine.id,
+                'placeId': id,
+                'token': localStorage.getItem("token")
+              }
+          }).then(function (resp) {
+            $scope.modal.hide()
+            $ionicLoading.hide();
+              $state.go("app.machine_audite",{id: id});
+              
+          }, function (resp) {
+              console.log(resp);
+          }, function (evt) {
+              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              $ionicLoading.show({
+                template: 'Loading... (' + progressPercentage + '% ) ',
+                duration: 1000
+              });
+          });
     }
 
 
